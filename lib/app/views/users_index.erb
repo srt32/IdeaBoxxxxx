@@ -1,0 +1,19 @@
+<% if false %>
+<%= erb :form, locals: {idea: idea}  %>
+<% end %>
+
+<h3>Existing Users</h3>
+<ul>
+  <% users.each do |user| %>
+    <li>
+      <%= user.email %><br />
+      <% if false %>
+      <a href="/<%= idea.id %>/edit">Edit</a>
+      <form action="/<%= idea.id %>" method="POST">
+        <input type="hidden" name="_method" value="DELETE">
+        <input type="submit" value="delete" />
+      </form>
+    <% end %>
+    </li>
+  <% end %>
+</ul>

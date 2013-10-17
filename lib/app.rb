@@ -44,4 +44,8 @@ class IdeaBoxApp < Sinatra::Base
     redirect '/'
   end
 
+  get '/users' do
+    erb :users_index, locals: {users: UserStore.all}
+  end
+
 end

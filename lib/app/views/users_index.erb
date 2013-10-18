@@ -2,6 +2,7 @@
 
 <h3>Existing Users</h3>
 <ul>
+  <%= users %>
   <% users.each do |user| %>
     <li>
       <%= user.email %><br />
@@ -11,7 +12,7 @@
         <input type="hidden" name="_method" value="DELETE">
         <input type="submit" value="delete" />
       </form>
-    <% end %>
+      <% end %>
     </li>
   <% end %>
 </ul>

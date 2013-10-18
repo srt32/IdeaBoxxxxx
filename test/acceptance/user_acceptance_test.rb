@@ -31,7 +31,7 @@ class UserAcceptanceTest < Minitest::Test
 
   def test_it_can_create_a_new_user
     visit '/users'
-    fill_in('user["email"]', :with => "Kumar@example.com")
+    fill_in('user[email]', :with => "Kumar@example.com")
     click_button('sign_up_button')
     assert page.has_content?("Kumar@example.com") #redirect /users
   end

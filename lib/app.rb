@@ -45,7 +45,13 @@ class IdeaBoxApp < Sinatra::Base
   end
 
   get '/users' do
-    erb :users_index, locals: {users: UserStore.all}
+    erb :users_index, locals: {users: UserStore.all, user: User.new}
+  end
+
+  post '/users' do
+    UserStore.create(User.new(params[:user]))
+    #binding.pry
+    redirect '/users'
   end
 
 end

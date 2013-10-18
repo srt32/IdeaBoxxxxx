@@ -2,4 +2,10 @@
 ideas:
 - title: '444'
   description: '333'
-users: []
+  rank: 3
+- title: '123'
+  description: '456'
+users:
+- !ruby/object:User
+  email: 
+  id: 1

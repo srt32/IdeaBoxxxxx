@@ -2,7 +2,7 @@ class User
 
   attr_accessor :email, :id # thd :id accessor is very bad
 
-  def initialize(input)
+  def initialize(input = {})
     @email = input["email"]
     @id = assign_pk
   end

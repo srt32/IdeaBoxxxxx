@@ -19,11 +19,19 @@ class UserTest < Minitest::Test
   end
 
   def post_a_user
-    post '/', params={:idea => {:title => "yep", :description => "big idea"}}
+    post '/users', {:user => {:email => "bigTony@example.com"}}
   end
 
-  def test_it_works
-    assert false
+  def test_it_can_get_users_index
+    get '/users'
+    assert last_response.body.include?("Users")
+  end
+
+  def test_it_can_post_a_user
+    post_a_user
+    assert last_response.redirect?
+    follow_redirect!
+    assert last_response.body.include?("bigTony@example.com"), "after posting user, redirect back to user index"
   end
 
 end

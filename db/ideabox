@@ -12,3 +12,6 @@ users:
 - !ruby/object:User
   email: 
   id: 2
+- !ruby/object:User
+  email: me
+  id: 3

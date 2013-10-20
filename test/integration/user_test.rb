@@ -10,6 +10,10 @@ class UserTest < Minitest::Test
     IdeaBoxApp
   end
 
+  def setup
+    delete_test_db
+  end
+
   def teardown
     delete_test_db
   end
@@ -36,9 +40,10 @@ class UserTest < Minitest::Test
 
   def test_it_can_get_a_user_show_page
     post_a_user
-    get '/users/1'
-    assert last_response.ok?, "users/1 should respond with ok"
-    assert last_response.body.include?("bigTony@exampl.com"), "user show page should show the user's email"
+    get '/users/2'
+    assert last_response.ok?, "users/2 should respond with ok"
+    assert last_response.body.include?("user page"), "user show page should include 'user page'"
+    assert last_response.body.include?("bigTony@example.com"), "user show page should show the user's email"
   end
 
 end

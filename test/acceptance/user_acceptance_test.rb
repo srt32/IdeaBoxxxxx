@@ -38,7 +38,7 @@ class UserAcceptanceTest < Minitest::Test
 
   def test_it_goes_to_user_show_page
     visit '/users/1'
-    assert page.has_content?("Kumar@example.com")
+    assert page.has_content?("simon@example.com")
     # go write a rack test
   end
 

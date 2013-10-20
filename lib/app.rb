@@ -55,11 +55,13 @@ class IdeaBoxApp < Sinatra::Base
 
   get '/users/:id' do |id|
     user = UserStore.find(id.to_i)
-    erb :user_show, locals: {user: user}
+    erb :user_show, locals: {user: user, ideas: IdeaStore.find_all_by_user_id(id)}
+    # write idea unit test for find_all_by_user_id
   end
 
-  # wrtie post '/users/:id'
-  # write an integration test first, and figure out how to tag an idea with
-  # a user_id
+  post '/users/:id' do |id|
+    IdeaStore.create(params[:idea])
+    redirect '/users/' + id
+  end
 
 end

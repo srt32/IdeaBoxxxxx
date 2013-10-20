@@ -34,4 +34,11 @@ class UserTest < Minitest::Test
     assert last_response.body.include?("bigTony@example.com"), "after posting user, redirect back to user index"
   end
 
+  def test_it_can_get_a_user_show_page
+    post_a_user
+    get '/users/1'
+    assert last_response.ok?, "users/1 should respond with ok"
+    assert last_response.body.include?("bigTony@exampl.com"), "user show page should show the user's email"
+  end
+
 end

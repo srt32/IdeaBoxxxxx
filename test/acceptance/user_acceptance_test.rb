@@ -37,10 +37,9 @@ class UserAcceptanceTest < Minitest::Test
   end
 
   def test_it_goes_to_user_show_page
-    skip
-    # visit /users
-    # click on show more for a user
-    # page should show that users info, maybe check url?
+    visit '/users/1'
+    assert page.has_content?("Kumar@example.com")
+    # go write a rack test
   end
 
 end

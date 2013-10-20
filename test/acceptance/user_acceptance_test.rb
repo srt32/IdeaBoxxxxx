@@ -39,7 +39,15 @@ class UserAcceptanceTest < Minitest::Test
   def test_it_goes_to_user_show_page
     visit '/users/1'
     assert page.has_content?("simon@example.com")
-    # go write a rack test
+  end
+
+  def test_it_can_post_a_new_idea_for_current_user
+    visit '/users/1'
+    fill_in('idea[title]', :with => "User 1's big idea")
+    fill_in('idea[description]', :with => "User 1's first big idea's description")
+    assert page.has_content?("User 1's big idea"), "page should display idea title"
+    assert page.has_content?("User 1's first big idea's description"), "page should display idea desc"
+    # go write an integration test
   end
 
 end

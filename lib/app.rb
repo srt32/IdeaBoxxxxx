@@ -58,4 +58,8 @@ class IdeaBoxApp < Sinatra::Base
     erb :user_show, locals: {user: user}
   end
 
+  # wrtie post '/users/:id'
+  # write an integration test first, and figure out how to tag an idea with
+  # a user_id
+
 end

@@ -46,4 +46,14 @@ class UserTest < Minitest::Test
     assert last_response.body.include?("bigTony@example.com"), "user show page should show the user's email"
   end
 
+  def test_it_can_post_a_new_idea_from_user_show_page
+    post_a_user
+    post '/users/2', {:idea => {:title => "user 2 idea title", :description => "idea desc"}}
+    assert last_response.redirect?, "after posting idea, should redirect"
+    follow_redirect!
+    assert last_response.body.include?("bigTony@example.com"), "page should show user's email"
+    assert last_response.body.include?("user 2 idea title")
+    # write updated unit tests for idea, to test for a user_id
+  end
+
 end

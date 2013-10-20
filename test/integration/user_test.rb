@@ -53,7 +53,6 @@ class UserTest < Minitest::Test
     follow_redirect!
     assert last_response.body.include?("bigTony@example.com"), "page should show user's email"
     assert last_response.body.include?("user 2 idea title"), "page should show new idea title"
-    # write updated unit tests for idea, to test for a user_id
   end
 
 end

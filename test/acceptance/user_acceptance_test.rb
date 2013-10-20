@@ -45,9 +45,9 @@ class UserAcceptanceTest < Minitest::Test
     visit '/users/1'
     fill_in('idea[title]', :with => "User 1's big idea")
     fill_in('idea[description]', :with => "User 1's first big idea's description")
+    click_button('submit_button')
     assert page.has_content?("User 1's big idea"), "page should display idea title"
     assert page.has_content?("User 1's first big idea's description"), "page should display idea desc"
-    # go write an integration test
   end
 
 end

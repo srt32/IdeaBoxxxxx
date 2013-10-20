@@ -4,9 +4,15 @@
   <p>
     Your new idea:
   </p>
-  <input type='hideen' name='idea[user_id]' value='<%= user.id %>' /><br />
+  <input type='hidden' name='idea[user_id]' value='<%= user.id %>' /><br />
   <input type='text' name='idea[title]' /><br />
   <textarea name='idea[description]'></textarea><br />
   <input type='submit' id='submit_button'/>
 </form>
 
+<% ideas.each do |idea| %>
+  <ul>
+    <li>Idea title: <%= idea.title %></li>
+    <li>Idea desc: <%= idea.description %></li>
+  </ul>
+<% end %>

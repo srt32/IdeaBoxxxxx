@@ -19,7 +19,7 @@ class AppTest < Minitest::Test
   end
 
   def post_an_idea
-    post '/', params={:idea => {:title => "yep", :description => "big idea"}}
+    post '/', params={:idea => {:title => "yep", :description => "big idea", :user_id => 1}}
   end
 
   def test_it_can_route_to_root_with_get

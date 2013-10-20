@@ -36,10 +36,13 @@ class IdeaStore
   def self.update(id, data)
     old_idea = find(id)
     new_idea = old_idea.to_h.merge(data)
-    #binding.pry
     database.transaction do
       database['ideas'][id] = new_idea
     end
+  end
+
+  def self.find_all_by_user_id(user_id)
+    all.select{|idea| idea.user_id == user_id}
   end
 
   def self.find(id)

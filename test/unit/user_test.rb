@@ -37,6 +37,12 @@ class UserTest < Minitest::Test
     assert_equal 1, user.id
   end
 
+  def test_it_can_find_a_user
+    first_user = UserStore.find(1)
+    assert_equal "simon@example.com", first_user.email
+    assert_equal 1, first_user.id
+  end
+
   def test_it_can_find_largest_id
     assert_equal 1, UserStore.max_id
     second_user = User.new("email" => "simon@example.com")

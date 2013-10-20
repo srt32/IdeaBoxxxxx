@@ -50,8 +50,12 @@ class IdeaBoxApp < Sinatra::Base
 
   post '/users' do
     UserStore.create(User.new(params[:user]))
-    #binding.pry
     redirect '/users'
+  end
+
+  get '/users/:id' do |id|
+    user = UserStore.find(id.to_i)
+    erb :user_show, locals: {user: user}
   end
 
 end

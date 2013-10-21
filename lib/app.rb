@@ -56,7 +56,6 @@ class IdeaBoxApp < Sinatra::Base
   get '/users/:id' do |id|
     user = UserStore.find(id.to_i)
     erb :user_show, locals: {user: user,
-                            ideas: IdeaStore.find_all_by_user_id(id),
                             groups: GroupStore.find_all_by_user_id(id.to_i)}
     # write idea unit test for find_all_by_user_id
   end

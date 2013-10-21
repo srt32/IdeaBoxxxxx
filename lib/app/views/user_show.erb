@@ -24,6 +24,7 @@
   <input type='submit' id='create_group_button' />
 </form>
 
+<% if false %>
 <p>Existing ideas:</p>
 <% ideas.each do |idea| %>
   <ul>
@@ -31,10 +32,17 @@
     <li>Idea desc: <%= idea.description %></li>
   </ul>
 <% end %>
+<% end %>
 
 <p>Existing Groups</p>
 <% groups.each do |group| %>
   <ul>
     <li>Group name: <%= group.name %><li>
+    group ideas are <%= group.ideas %>
+      <% group.ideas.each do |idea| %>
+        <ul>
+          <li><%= idea.title  %></li>
+        </ul>
+      <% end %>
   </ul>
 <% end %>

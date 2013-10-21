@@ -11,7 +11,7 @@ class Group
   end
 
   def ideas
-    IdeaStore.find_all_by_group_id(id)
+    IdeaStore.find_all_by_group_id(self.id.to_i)
   end
 
 end

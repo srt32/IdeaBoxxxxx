@@ -42,11 +42,12 @@ class IdeaStore
   end
 
   def self.find_all_by_user_id(user_id)
-    all.select{|idea| idea.user_id == user_id}
+    all.select{|idea| idea.user_id.to_i == user_id.to_i}
   end
 
-  def self.find_all_by_group_id(group_id)
-    all.select{|idea| idea.group_id == group_id}
+  def self.find_all_by_group_id(rel_group_id)
+    #binding.pry
+    all.select{|idea| idea.group_id.to_i == rel_group_id.to_i}
   end
 
   def self.find(id)

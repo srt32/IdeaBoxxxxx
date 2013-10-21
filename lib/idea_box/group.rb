@@ -10,4 +10,8 @@ class Group
     @user_id = attributes[:user_id]
   end
 
+  def ideas
+    IdeaStore.find_all_by_group_id(id)
+  end
+
 end

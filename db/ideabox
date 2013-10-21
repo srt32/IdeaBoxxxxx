@@ -18,6 +18,9 @@ ideas:
   title: bk_idea
   description: bk_desc
   group_id: '1'
+- user_id: '3'
+  title: user_3_idea_title
+  description: "user_3_with no group\r\n"
 users:
 - !ruby/object:User
   email: 

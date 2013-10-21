@@ -55,4 +55,14 @@ class IdeaTest < Minitest::Test
     assert_equal 1, IdeaStore.find(0).group_id
   end
 
+  def test_it_returns_ideas_by_group_id
+    second_idea = IdeaStore.create("title" => "boogie",
+                                 "description" => "social network for penguins",
+                                 "rank" => "3",
+                                 "user_id" => 1,
+                                 "group_id" => 1)
+    ideas = IdeaStore.find_all_by_group_id(1)
+    assert_equal ["app","boogie"], ideas.map(&:title)
+  end
+
 end

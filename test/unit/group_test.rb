@@ -3,7 +3,7 @@ require_relative '../../lib/idea_box/group_store'
 
 class GroupTest < Minitest::Test
 
-  attr_reader :group_one
+  attr_reader :group_one, :saved_group
 
   def setup
     delete_test_db
@@ -45,6 +45,26 @@ class GroupTest < Minitest::Test
     assert_equal 1, user_one_groups.length
     assert_includes(user_one_groups.map(&:name),"best group")
     refute_includes(user_one_groups.map(&:name),"user.id 2 group")
+  end
+
+  def test_it_has_ideas
+    first_idea = IdeaStore.create("title" => "app",
+                                 "description" => "social network for penguins",
+                                 "rank" => "3",
+                                 "user_id" => 1,
+                                 "group_id" => 1)
+    second_idea = IdeaStore.create("title" => "facebook",
+                                 "description" => "social network for giraffes",
+                                 "rank" => "3",
+                                 "user_id" => 1,
+                                 "group_id" => 1)
+    other_user_idea = IdeaStore.create("title" => "jungle",
+                                 "description" => "board game",
+                                 "rank" => "3",
+                                 "user_id" => 2,
+                                 "group_id" => 2)
+
+    assert_equal ["app","facebook"], saved_group.last.ideas.map(&:title)
   end
 
 end

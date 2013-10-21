@@ -45,6 +45,10 @@ class IdeaStore
     all.select{|idea| idea.user_id == user_id}
   end
 
+  def self.find_all_by_group_id(group_id)
+    all.select{|idea| idea.group_id == group_id}
+  end
+
   def self.find(id)
     raw_idea = find_raw_idea(id)
     Idea.new(raw_idea.merge("id" => id))

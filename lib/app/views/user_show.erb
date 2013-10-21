@@ -1,47 +1,49 @@
-<h3><%= user.email %> 's user page</h3>
+<h3><%= user.email %>'s user page</h3>
 
-<form action='/users/<%= user.id %>' method='POST'>
-  <p>
-    Your new idea:
-  </p>
-  <input type='hidden' name='idea[user_id]' value='<%= user.id %>' /><br />
-  <input type='text' name='idea[title]' /><br />
-  <textarea name='idea[description]'></textarea><br />
-  Group: <select name='idea[group_id]' id='group_dropdown'>
-    <% groups.each do |group| %>
-      <option value=<%= group.id %> name=<%= group.name %>><%= group.name %></option>
-    <% end %>
-  </select>
-  <input type='submit' id='submit_button'/>
-</form>
+<div class="new_user_idea_form">
+  <form action='/users/<%= user.id %>' method='POST'>
+    <p>
+      Your new idea:
+    </p>
+    <input type='hidden' name='idea[user_id]' value='<%= user.id %>' /><br />
+    <input type='text' name='idea[title]' /><br />
+    <textarea name='idea[description]'></textarea><br />
+    Group: <select name='idea[group_id]' id='group_dropdown'>
+      <% groups.each do |group| %>
+        <option value=<%= group.id %> name=<%= group.name %>><%= group.name %></option>
+      <% end %>
+    </select>
+    <input type='submit' id='submit_button'/>
+  </form>
+</div>
 
-<form action='/users/<%= user.id %>/groups' method='POST'>
-  <p>
-    Your new group name:
-  </p>
-  <input type='hidden' name='group[user_id]' value='<%= user.id %>' /><br />
-  <input type='text' name='group[name]' /><br />
-  <input type='submit' id='create_group_button' />
-</form>
-
-<% if false %>
-<p>Existing ideas:</p>
-<% ideas.each do |idea| %>
-  <ul>
-    <li>Idea title: <%= idea.title %></li>
-    <li>Idea desc: <%= idea.description %></li>
-  </ul>
-<% end %>
-<% end %>
+<div id="new_user_group_form">
+  <form action='/users/<%= user.id %>/groups' method='POST'>
+    <p>
+      Your new group name:
+    </p>
+    <input type='hidden' name='group[user_id]' value='<%= user.id %>' /><br />
+    <input type='text' name='group[name]' /><br />
+    <input type='submit' id='create_group_button' />
+  </form>
+</div>
 
 <p>Existing Groups</p>
 <% groups.each do |group| %>
-  <ul>
+  <ul id="user_group_list">
     <li>Group name: <%= group.name %><li>
     group ideas are <%= group.ideas %>
       <% group.ideas.each do |idea| %>
-        <ul>
-          <li><%= idea.title  %></li>
+        <ul id="group_idea_list">
+          <li><%= idea.title  %><%= idea.description %><%= idea.rank %></li>
+            <form action='/<%= idea.id %>/like' method='POST' style="display: inline">
+              <input type='submit' id='rank_button' value="+" />
+            </form>
+            <a href="/<%= idea.id %>/edit">Edit</a>
+            <form action="/<%= idea.id %>" method="POST">
+              <input type="hidden" name="_method" value="DELETE">
+              <input type="submit" value="delete" />
+            </form>
         </ul>
       <% end %>
   </ul>

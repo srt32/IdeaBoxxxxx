@@ -13,7 +13,8 @@ class IdeaTest < Minitest::Test
     @new_idea = IdeaStore.create("title" => "app",
                                  "description" => "social network for penguins",
                                  "rank" => "3",
-                                 "user_id" => 1)
+                                 "user_id" => 1,
+                                 "group_id" => 1)
   end
 
   def teardown
@@ -51,9 +52,7 @@ class IdeaTest < Minitest::Test
   end
 
   def test_it_responds_to_group_id
-    assert false
-    # go write integration test, posting an idea with a group_id
-    # then, write acceptance test, filling in form with proper group_id
-    # test dropdown selections are correct
+    assert_equal 1, IdeaStore.find(0).group_id
   end
+
 end

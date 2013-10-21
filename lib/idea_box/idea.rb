@@ -1,7 +1,7 @@
 class Idea
   include Comparable
 
-  attr_reader :title, :description, :rank, :id, :user_id
+  attr_reader :title, :description, :rank, :id, :user_id, :group_id
 
   def initialize(attributes = {})
     @title = attributes["title"]
@@ -9,6 +9,7 @@ class Idea
     @rank = attributes["rank"] || 0
     @id = attributes["id"]
     @user_id = attributes["user_id"]
+    @group_id = attributes["group_id"]
   end
 
   def like!
@@ -29,7 +30,8 @@ class Idea
       "description" => description,
       "rank" => rank,
       "id" => id,
-      "user_id" => user_id
+      "user_id" => user_id,
+      "group_id" => group_id
     }
   end
 

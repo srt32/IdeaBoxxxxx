@@ -21,7 +21,7 @@ class GroupStore
   end
 
   def self.find_all_by_user_id(user_id)
-    all.select{|group| group.user_id == user_id}
+    all.select{|group| group.user_id.to_i == user_id.to_i}
   end
 
   def self.raw_groups

@@ -14,6 +14,10 @@ ideas:
 - user_id: '5'
   title: No laptops
   description: Jeff gets very mad during presentations.
+- user_id: '5'
+  title: bk_idea
+  description: bk_desc
+  group_id: '1'
 users:
 - !ruby/object:User
   email: 
@@ -39,3 +43,7 @@ groups:
   name: holy mackerole
   user_id: '5'
   id: 2
+- !ruby/object:Group
+  name: user_$_group
+  user_id: '4'
+  id: 3

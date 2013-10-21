@@ -1,6 +1,7 @@
 GEM
   remote: https://rubygems.org/
   specs:
+    addressable (2.3.5)
     backports (3.3.5)
     capybara (2.1.0)
       mime-types (>= 1.16)
@@ -9,6 +10,8 @@ GEM
       rack-test (>= 0.5.4)
       xpath (~> 2.0)
     coderay (1.0.9)
+    launchy (2.3.0)
+      addressable (~> 2.3)
     method_source (0.8.2)
     mime-types (1.25)
     mini_portile (0.5.1)
@@ -51,6 +54,7 @@ PLATFORMS
 
 DEPENDENCIES
   capybara
+  launchy
   minitest
   minitest-capybara
   pry

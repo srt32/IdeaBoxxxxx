@@ -19,7 +19,10 @@ class AppTest < Minitest::Test
   end
 
   def post_an_idea
-    post '/', params={:idea => {:title => "yep", :description => "big idea", :user_id => 1}}
+    post '/', params={:idea => {:title => "yep",
+                                :description => "big idea",
+                                :user_id => 1,
+                                :group_id => 1}}
   end
 
   def test_it_can_route_to_root_with_get
@@ -52,4 +55,12 @@ class AppTest < Minitest::Test
     post '/0/like'
     assert last_response.redirect?, "route was not redirected"
   end
+
+  def test_it_can_post_with_a_group_id
+    skip # already tested in post_an_idea
+    # go write integration test, posting an idea with a group_id
+    # then, write acceptance test, filling in form with proper group_id
+    # test dropdown selections are correct
+  end
+
 end

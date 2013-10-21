@@ -7,6 +7,11 @@
   <input type='hidden' name='idea[user_id]' value='<%= user.id %>' /><br />
   <input type='text' name='idea[title]' /><br />
   <textarea name='idea[description]'></textarea><br />
+  Group: <select name='idea[group_id]' id='group_dropdown'>
+    <% groups.each do |group| %>
+      <option value=<%= group.id %> name=<%= group.name %>><%= group.name %></option>
+    <% end %>
+  </select>
   <input type='submit' id='submit_button'/>
 </form>
 

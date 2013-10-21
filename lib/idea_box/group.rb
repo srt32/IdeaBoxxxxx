@@ -1,8 +1,9 @@
 class Group
 
   attr_reader :name,
-              :user_id,
-              :id
+              :user_id
+
+  attr_accessor :id
 
   def initialize(attributes)
     @name = attributes[:name]

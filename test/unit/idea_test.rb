@@ -50,4 +50,10 @@ class IdeaTest < Minitest::Test
     assert prior_rank.to_i + 1, IdeaStore.all.first.rank.to_i
   end
 
+  def test_it_responds_to_group_id
+    assert false
+    # go write integration test, posting an idea with a group_id
+    # then, write acceptance test, filling in form with proper group_id
+    # test dropdown selections are correct
+  end
 end

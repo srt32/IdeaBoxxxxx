@@ -28,5 +28,4 @@ class GroupAcceptanceTest < Minitest::Test
     click_button('create_group_button')
     assert page.has_content?("first_user's group"), "should redirect to user#show page and display groups"
   end
-
 end

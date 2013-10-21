@@ -30,3 +30,12 @@ users:
 - !ruby/object:User
   email: Adam@UK.com
   id: 5
+groups:
+- !ruby/object:Group
+  name: Big Kahuna
+  user_id: '5'
+  id: 1
+- !ruby/object:Group
+  name: holy mackerole
+  user_id: '5'
+  id: 2

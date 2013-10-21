@@ -20,6 +20,10 @@ class GroupStore
     groups
   end
 
+  def self.find_all_by_user_id(user_id)
+    all.select{|group| group.user_id == user_id}
+  end
+
   def self.raw_groups
     database.transaction do |db|
       db['groups'] || []

@@ -10,9 +10,26 @@
   <input type='submit' id='submit_button'/>
 </form>
 
+<form action='/users/<%= user.id %>/groups' method='POST'>
+  <p>
+    Your new group name:
+  </p>
+  <input type='hidden' name='group[user_id]' value='<%= user.id %>' /><br />
+  <input type='text' name='group[name]' /><br />
+  <input type='submit' id='create_group_button' />
+</form>
+
+<p>Existing ideas:</p>
 <% ideas.each do |idea| %>
   <ul>
     <li>Idea title: <%= idea.title %></li>
     <li>Idea desc: <%= idea.description %></li>
+  </ul>
+<% end %>
+
+<p>Existing Groups</p>
+<% groups.each do |group| %>
+  <ul>
+    <li>Group name: <%= group.name %><li>
   </ul>
 <% end %>

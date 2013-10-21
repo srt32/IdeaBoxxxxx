@@ -38,4 +38,13 @@ class GroupTest < Minitest::Test
     assert_equal 2, GroupStore.all[1].id
   end
 
+  def test_it_selects_only_groups_by_given_user
+    group_two = Group.new(:name => "user.id 2 group", :user_id => 2)
+    GroupStore.create(group_two)
+    user_one_groups = GroupStore.find_all_by_user_id(1)
+    assert_equal 1, user_one_groups.length
+    assert_includes(user_one_groups.map(&:name),"best group")
+    refute_includes(user_one_groups.map(&:name),"user.id 2 group")
+  end
+
 end

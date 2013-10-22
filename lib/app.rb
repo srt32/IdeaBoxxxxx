@@ -7,9 +7,8 @@ class IdeaBoxApp < Sinatra::Base
   set :root, 'lib/app'
 
   before // do
-    pass if request.path_info == '/login'
-    pass if request.path_info == '/auth/twitter/callback'
-    pass if session[:admin]
+    OPEN_URLS = ['/login', '/auth/twitter/callback', '/']
+    pass if session[:admin] || OPEN_URLS.include?(request.path_info)
     redirect to('/login')
   end
 

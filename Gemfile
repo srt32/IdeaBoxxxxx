@@ -8,3 +8,4 @@ gem 'pry', require: false
 gem 'capybara'
 gem 'minitest-capybara'
 gem 'launchy'
+gem 'omniauth-twitter'

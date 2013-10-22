@@ -1,9 +1,51 @@
 require 'sinatra/base'
 require_relative './idea_box'
+require 'omniauth-twitter'
 
 class IdeaBoxApp < Sinatra::Base
   set :method_override, true
   set :root, 'lib/app'
+
+  helpers do
+    def admin?
+      session[:admin]
+    end
+  end
+
+  configure do
+    enable :sessions
+  end
+
+  use OmniAuth::Builder do
+    provider :twitter, 'EZtMcMRXcYYswwqyNtfobw', 'i8knkHioADOmeAWGl1d1yhUQHANPY5lpgwCtcWWdeA'
+  end
+
+  get '/login' do
+    redirect to("/auth/twitter")
+  end
+
+  get '/auth/twitter/callback' do
+    env['omniauth.auth'] ? session[:admin] = true : halt(401,'Not Authorized')
+    "Hi #{env['omniauth.auth']['info']['name']}"
+  end
+
+  get '/auth/failure' do
+    params[:message]
+  end
+
+  get '/logout' do
+    session[:admin] = nil
+    "You are now logged out"
+  end
+
+  get '/public' do
+    "This is a public page"
+  end
+
+  get '/private' do
+    halt(401, 'Not Authorized') unless admin?
+    "This is private."
+  end
 
   configure :development do
     register Sinatra::Reloader

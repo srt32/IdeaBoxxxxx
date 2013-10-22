@@ -19,6 +19,7 @@ class AppTest < Minitest::Test
   end
 
   def post_an_idea
+    # TODO: change this to post to /users/1
     post '/', params={:idea => {:title => "yep",
                                 :description => "big idea",
                                 :user_id => 1,
@@ -31,6 +32,7 @@ class AppTest < Minitest::Test
   end
 
   def test_it_routes_to_root_post
+    skip # deprecated, now posts to /users/:id
     post_an_idea
     assert last_response.redirect?
     follow_redirect!

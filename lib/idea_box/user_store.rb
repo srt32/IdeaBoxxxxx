@@ -33,7 +33,7 @@ class UserStore
 
   def self.find(id)
     database.transaction do
-      database['users'].find{|user| user.id == id}
+      database['users'].find{|user| user.id.to_i == id.to_i}
     end
   end
 

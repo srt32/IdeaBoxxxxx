@@ -15,8 +15,8 @@ ideas:
   title: No laptops
   description: Jeff gets very mad during presentations.
 - title: bk_idea
-  description: bk_descd
-  rank: 1
+  description: bk_descddddddddsddd
+  rank: 2
   id: 5
   user_id: '5'
   group_id: '1'
@@ -38,6 +38,10 @@ ideas:
 - user_id: '5'
   title: anohter
   description: ye
+  group_id: '1'
+- user_id: '5'
+  title: YEAH
+  description: NOPE
   group_id: '1'
 users:
 - !ruby/object:User

@@ -24,7 +24,7 @@ class IdeaBoxApp < Sinatra::Base
 
   delete '/:id' do |id|
     IdeaStore.delete(id.to_i)
-    redirect '/'
+    redirect back
   end
 
   get '/:id/edit' do |id|
@@ -34,14 +34,14 @@ class IdeaBoxApp < Sinatra::Base
 
   put '/:id' do |id|
     IdeaStore.update(id.to_i, params[:idea])
-    redirect '/'
+    redirect '/users', "should redirect to user/:id TODO"  # needs to redirect to users/:id, currently going back to edit
   end
 
   post '/:id/like' do |id|
     idea = IdeaStore.find(id.to_i)
     idea.like!
     IdeaStore.update(id.to_i, idea.to_h)
-    redirect '/'
+    redirect back
   end
 
   get '/users' do

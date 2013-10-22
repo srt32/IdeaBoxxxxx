@@ -16,8 +16,13 @@ class IdeaAcceptanceTest < Minitest::Test
                                  "rank" => 3,
                                  "user_id" => 1,
                                  "group_id" => 1)
-
     make_groups
+  end
+
+  def make_groups
+    @group_one = GroupStore.create(Group.new(:name => "user_1_first_group", :user_id => 1))
+    @group_two = GroupStore.create(Group.new(:name => "user_1_second_group", :user_id => 1))
+    @group_three = GroupStore.create(Group.new(:name => "user_2_first_group", :user_id => 2))
   end
 
   def teardown
@@ -34,22 +39,23 @@ class IdeaAcceptanceTest < Minitest::Test
   end
 
   def test_it_can_edit_an_idea
-    visit '/'
+    #binding.pry
+    visit '/users/1'
     click_link('Edit')
     fill_in('idea[title]', :with => "NOPE")
     click_button('submit_button')
-    assert page.has_content?('NOPE')
+    assert page.has_content?('NOPE'), "should redirect to user/:id TODO" 
   end
 
   def test_it_can_delete_an_idea
-    visit '/'
+    visit '/users/1'
     assert page.has_content?('penguin')
     click_button('delete')
     refute page.has_content?('penguin')
   end
 
   def test_it_can_add_to_rank
-    visit '/'
+    visit '/users/1'
     assert page.has_content?("3")
     click_button('+')
     assert page.has_content?("4")
@@ -62,12 +68,6 @@ class IdeaAcceptanceTest < Minitest::Test
     find(:select, "idea[group_id]").first(:option, 'user_1_first_group').select_option
     click_button('submit_button')
     assert page.has_content?("pushups")
-  end
-
-  def make_groups
-    @group_one = GroupStore.create(Group.new(:name => "user_1_first_group", :user_id => 1))
-    @group_two = GroupStore.create(Group.new(:name => "user_1_second_group", :user_id => 1))
-    @group_three = GroupStore.create(Group.new(:name => "user_2_first_group", :user_id => 2))
   end
 
 end

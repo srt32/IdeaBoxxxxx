@@ -6,6 +6,13 @@ class IdeaBoxApp < Sinatra::Base
   set :method_override, true
   set :root, 'lib/app'
 
+  before // do
+    pass if request.path_info == '/login'
+    pass if request.path_info == '/auth/twitter/callback'
+    pass if session[:admin]
+    redirect to('/login')
+  end
+
   helpers do
     def admin?
       session[:admin]

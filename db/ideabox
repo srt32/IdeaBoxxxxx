@@ -26,10 +26,11 @@ ideas:
   tags: []
 - title: YEAH
   description: NOPEYESP
-  rank: 3
-  id: 11
+  rank: 4
+  id: 7
   user_id: '5'
   group_id: '1'
+  tags: []
 - title: New tag idea
   description: YARGH
   rank: 5
@@ -42,14 +43,43 @@ ideas:
   - '"\"\\\"\\\\\\\"baz\\\\\\\"]\\\"]\"]"]'
 - title: fff
   description: fff
-  rank: 2
+  rank: 3
   id: 9
   user_id: '5'
   group_id: '4'
   tags:
-  - '["foo"'
-  - '"bar"'
-  - '"baz"]'
+  - '["[\"foo\""'
+  - '"\"bar\""'
+  - '"\"baz\"]"]'
+- title: yARP
+  description: ABARHGFH
+  rank: 1
+  id: 10
+  user_id: '5'
+  group_id: '2'
+  tags:
+  - simon
+- user_id: '5'
+  title: NEW IDEA
+  description: dd
+  tags: frank
+  group_id: '4'
+- title: NEW NEW IDEA
+  description: ''
+  rank: 4
+  id: 12
+  user_id: '5'
+  group_id: '4'
+  tags:
+  - '["[\"[\\\"frank beans\\\"]\"]"]'
+- title: ARRAY
+  description: ''
+  rank: 5
+  id: 13
+  user_id: '5'
+  group_id: '1'
+  tags:
+  - FRANK BEANS
 users:
 - !ruby/object:User
   email: 

@@ -55,3 +55,6 @@
 <% end %>
 
 <p>Your tags:</p>
+<% user.all_tags.each do |tag| %>
+  <a href='/tags/<%= tag %>'><%= tag %></a>
+<% end %>

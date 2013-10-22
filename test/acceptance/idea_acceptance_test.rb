@@ -93,8 +93,8 @@ class IdeaAcceptanceTest < Minitest::Test
     assert page.has_content?("foo"), "'foo' tag should be on page"
     # new method, users.all_tags (gets user's ideas and ideas' tag.uniq)
     click_link("foo")
-    assert page.has_content("Your ideas tagged with foo"), "tag#show page has title"
-    assert page.has_content("big idea")
+    assert page.has_content?("Your ideas tagged with foo"), "tag#show page has title"
+    assert page.has_content?("big idea")
   end
 
 end

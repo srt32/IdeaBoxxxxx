@@ -6,8 +6,7 @@ class Idea
               :rank,
               :id,
               :user_id,
-              :group_id,
-              :tags
+              :group_id
 
   def initialize(attributes = {})
     @title = attributes["title"]
@@ -17,6 +16,10 @@ class Idea
     @user_id = attributes["user_id"]
     @group_id = attributes["group_id"]
     @tags = split_tags(attributes["tags"])
+  end
+
+  def tags
+    @tags.map{|idea| idea.gsub(/[^\w\s]/,'')} # hack to fix db problem
   end
 
   def split_tags(raw_ideas)

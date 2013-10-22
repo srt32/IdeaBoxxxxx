@@ -46,7 +46,6 @@ class IdeaStore
   end
 
   def self.find_all_by_group_id(rel_group_id)
-    #binding.pry
     all.select{|idea| idea.group_id.to_i == rel_group_id.to_i}
   end
 

@@ -39,7 +39,6 @@ class IdeaAcceptanceTest < Minitest::Test
   end
 
   def test_it_can_edit_an_idea
-    #binding.pry
     visit '/users/1'
     click_link('Edit')
     fill_in('idea[title]', :with => "NOPE")
@@ -70,6 +69,32 @@ class IdeaAcceptanceTest < Minitest::Test
     click_button('submit_button')
     assert page.has_content?("pushups"), "page should have idea title"
     assert page.has_content?("foo"), "page should have a tag"
+  end
+
+  def make_ideas_with_tags(amount)
+    titles = ["big idea", "foofoo", "big dingo"]
+    tags = ["foo", "foo", "bar"]
+    for i in 0..(amount-1) do
+      count = i
+      IdeaStore.create("title" => titles[i],
+                                 "description" => "social network for penguins",
+                                 "rank" => 3,
+                                 "user_id" => 1,
+                                 "group_id" => 1,
+                                 "tags" => tags[i])
+      count += 1
+    end
+  end
+
+  def test_it_shows_ideas_based_on_tags
+    make_ideas_with_tags(3) # tied to user.id = 1
+    visit '/users/1'
+    assert page.has_content?("Your tags:"), "user#show page has tags title"
+    assert page.has_content?("foo"), "'foo' tag should be on page"
+    # new method, users.all_tags (gets user's ideas and ideas' tag.uniq)
+    click_link("foo")
+    assert page.has_content("Your ideas tagged with foo"), "tag#show page has title"
+    assert page.has_content("big idea")
   end
 
 end

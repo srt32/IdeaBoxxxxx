@@ -7,6 +7,10 @@ class User
     @id = assign_pk
   end
 
+  def all_tags
+    IdeaStore.find_all_by_user_id(id).flat_map(&:tags).uniq
+  end
+
   def assign_pk
     if UserStore.max_id
       return UserStore.max_id + 1

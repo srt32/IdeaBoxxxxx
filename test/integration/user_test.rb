@@ -58,4 +58,25 @@ class UserTest < Minitest::Test
     assert last_response.body.include?("user 2 idea title"), "page should show new idea title"
   end
 
+  def make_ideas_with_tags(amount)
+    titles = ["big idea", "foofoo", "big dingo"]
+    tags = ["foo", "foo", "bar"]
+    for i in 0..(amount-1) do
+      count = i
+      IdeaStore.create("title" => titles[i],
+                                 "description" => "social network for penguins",
+                                 "rank" => 3,
+                                 "user_id" => 1,
+                                 "group_id" => 1,
+                                 "tags" => tags[i])
+      count += 1
+    end
+  end
+
+  def test_it_returns_all_tags
+    make_ideas_with_tags(3)
+    user = UserStore.find(1)
+    assert_equal ["foo", "bar"], user.all_tags
+  end
+
 end

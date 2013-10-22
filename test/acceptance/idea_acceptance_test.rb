@@ -44,7 +44,7 @@ class IdeaAcceptanceTest < Minitest::Test
     click_link('Edit')
     fill_in('idea[title]', :with => "NOPE")
     click_button('submit_button')
-    assert page.has_content?('NOPE'), "should redirect to user/:id TODO" 
+    assert page.has_content?('NOPE'), "should redirect to user/:id TODO"
   end
 
   def test_it_can_delete_an_idea

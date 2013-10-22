@@ -34,7 +34,7 @@ class IdeaBoxApp < Sinatra::Base
 
   put '/:id' do |id|
     IdeaStore.update(id.to_i, params[:idea])
-    redirect '/users', "should redirect to user/:id TODO"  # needs to redirect to users/:id, currently going back to edit
+    redirect '/users/' + @@current_user_id # really bad hack
   end
 
   post '/:id/like' do |id|
@@ -54,6 +54,7 @@ class IdeaBoxApp < Sinatra::Base
   end
 
   get '/users/:id' do |id|
+    @@current_user_id = id
     user = UserStore.find(id.to_i)
     erb :user_show, locals: {user: user,
                             groups: GroupStore.find_all_by_user_id(id.to_i)}

@@ -60,4 +60,25 @@ class AppTest < Minitest::Test
     assert last_response.redirect?, "route was not redirected"
   end
 
+  def make_ideas_with_tags(amount)
+    titles = ["big idea", "foofoo", "big dingo"]
+    tags = ["foo", "foo", "bar"]
+    for i in 0..(amount-1) do
+      count = i
+      IdeaStore.create("title" => titles[i],
+                                 "description" => "social network for penguins",
+                                 "rank" => 3,
+                                 "user_id" => 1,
+                                 "group_id" => 1,
+                                 "tags" => tags[i])
+      count += 1
+    end
+  end
+
+  def test_it_generates_tag_routes
+    make_ideas_with_tags(3)
+    get '/tags/foo'
+    assert last_response.ok?, "page should be okay"
+  end
+
 end

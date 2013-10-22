@@ -71,4 +71,8 @@ class IdeaBoxApp < Sinatra::Base
     redirect '/users/' + id
   end
 
+  get '/tags/:tag' do |tag|
+    "#{tag} page!"
+  end
+
 end

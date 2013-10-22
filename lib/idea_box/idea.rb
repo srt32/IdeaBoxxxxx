@@ -1,7 +1,13 @@
 class Idea
   include Comparable
 
-  attr_reader :title, :description, :rank, :id, :user_id, :group_id
+  attr_reader :title,
+              :description,
+              :rank,
+              :id,
+              :user_id,
+              :group_id,
+              :tags
 
   def initialize(attributes = {})
     @title = attributes["title"]
@@ -10,6 +16,11 @@ class Idea
     @id = attributes["id"]
     @user_id = attributes["user_id"]
     @group_id = attributes["group_id"]
+    @tags = split_tags(attributes["tags"])
+  end
+
+  def split_tags(raw_ideas)
+    raw_ideas.to_s.split(', ')
   end
 
   def like!

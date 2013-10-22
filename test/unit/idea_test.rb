@@ -14,7 +14,8 @@ class IdeaTest < Minitest::Test
                                  "description" => "social network for penguins",
                                  "rank" => "3",
                                  "user_id" => 1,
-                                 "group_id" => 1)
+                                 "group_id" => 1,
+                                 "tags" => "foo, bar, baz")
   end
 
   def teardown
@@ -63,6 +64,10 @@ class IdeaTest < Minitest::Test
                                  "group_id" => 1)
     ideas = IdeaStore.find_all_by_group_id(1)
     assert_equal ["app","boogie"], ideas.map(&:title)
+  end
+
+  def test_it_assigns_and_returns_tags
+    assert_equal ["foo","bar","baz"], IdeaStore.find(0).tags
   end
 
 end

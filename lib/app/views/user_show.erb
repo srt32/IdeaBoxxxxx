@@ -31,9 +31,8 @@
 <p>Existing Groups</p>
 <% groups.each do |group| %>
   <ul id="user_group_list">
-    <li>Group name: <%= group.name %><li>
-    group ideas are <%= group.ideas %>
-      <% group.ideas.each do |idea| %>
+    <li>Group name: <%= group.name %></li>
+      <% group.ideas.sort.each do |idea| %>
         <ul id="group_idea_list">
           <li><%= idea.title  %><%= idea.description %><%= idea.rank %></li>
             <form action='/<%= idea.id %>/like' method='POST' style="display: inline">

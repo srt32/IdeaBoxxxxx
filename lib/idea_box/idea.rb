@@ -42,7 +42,8 @@ class Idea
       "rank" => rank,
       "id" => id,
       "user_id" => user_id,
-      "group_id" => group_id
+      "group_id" => group_id,
+      "tags" => tags
     }
   end
 

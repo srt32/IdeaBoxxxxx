@@ -6,8 +6,9 @@
       Your new idea:
     </p>
     <input type='hidden' name='idea[user_id]' value='<%= user.id %>' /><br />
-    <input type='text' name='idea[title]' /><br />
-    <textarea name='idea[description]'></textarea><br />
+    Title: <input type='text' name='idea[title]' /><br />
+    Description: <textarea name='idea[description]'></textarea><br />
+    Tags: <input type='text' name='idea[tags]' /><br />
     Group: <select name='idea[group_id]' id='group_dropdown'>
       <% groups.each do |group| %>
         <option value=<%= group.id %> name=<%= group.name %>><%= group.name %></option>
@@ -34,7 +35,12 @@
     <li>Group name: <%= group.name %></li>
       <% group.ideas.sort.each do |idea| %>
         <ul id="group_idea_list">
-          <li><%= idea.title  %><%= idea.description %><%= idea.rank %></li>
+          <li>
+            <%= idea.title  %><%= idea.description %><%= idea.rank %>
+            <% idea.tags.each do |tag| %>
+              <%= tag %>
+            <% end %>
+          </li>
             <form action='/<%= idea.id %>/like' method='POST' style="display: inline">
               <input type='submit' id='rank_button' value="+" />
             </form>

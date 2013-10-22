@@ -23,7 +23,8 @@ class AppTest < Minitest::Test
     post '/', params={:idea => {:title => "yep",
                                 :description => "big idea",
                                 :user_id => 1,
-                                :group_id => 1}}
+                                :group_id => 1,
+                                :tags => "foo, bar, baz"}}
   end
 
   def test_it_can_route_to_root_with_get
@@ -37,6 +38,7 @@ class AppTest < Minitest::Test
     assert last_response.redirect?
     follow_redirect!
     assert last_response.body.include?("yep"), "Index should include 'yep'"
+    assert last_response.body.include?("foohdhdhd"), "index should contain a tag"
   end
 
   def test_it_can_delete_an_idea

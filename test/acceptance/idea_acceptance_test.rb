@@ -65,9 +65,11 @@ class IdeaAcceptanceTest < Minitest::Test
     visit '/users/1'
     fill_in('idea[title]', :with => "pushups")
     fill_in('idea[description]', :with => "100's")
+    fill_in('idea[tags]', :with => "foo, bar, baz")
     find(:select, "idea[group_id]").first(:option, 'user_1_first_group').select_option
     click_button('submit_button')
-    assert page.has_content?("pushups")
+    assert page.has_content?("pushups"), "page should have idea title"
+    assert page.has_content?("foo"), "page should have a tag"
   end
 
 end

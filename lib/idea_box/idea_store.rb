@@ -50,6 +50,14 @@ class IdeaStore
     all.select{|idea| idea.group_id.to_i == rel_group_id.to_i}
   end
 
+  def self.all_tags
+    all.flat_map(&:tags).uniq
+  end
+
+  def self.find_all_by_tag(tag_string)
+    all.select{|idea| idea.tags.include?(tag_string)}
+  end
+
   def self.find(id)
     raw_idea = find_raw_idea(id)
     Idea.new(raw_idea.merge("id" => id))

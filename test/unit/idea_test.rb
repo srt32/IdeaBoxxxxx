@@ -70,4 +70,24 @@ class IdeaTest < Minitest::Test
     assert_equal ["foo","bar","baz"], IdeaStore.find(0).tags
   end
 
+  def test_it_collects_all_tags
+    second_idea = IdeaStore.create("title" => "boogie",
+                                 "description" => "social network for penguins",
+                                 "rank" => "3",
+                                 "user_id" => 1,
+                                 "group_id" => 1,
+                                 "tags" => "foo, fubar")
+    assert_equal ["foo","bar","baz","fubar"], IdeaStore.all_tags
+  end
+
+  def test_it_returns_ideas_for_a_tag
+     second_idea = IdeaStore.create("title" => "boogie",
+                                 "description" => "social network for penguins",
+                                 "rank" => "3",
+                                 "user_id" => 1,
+                                 "group_id" => 1,
+                                 "tags" => "foo, fubar")
+   assert_equal ["app","boogie"], IdeaStore.find_all_by_tag("foo").map(&:title)
+  end
+
 end

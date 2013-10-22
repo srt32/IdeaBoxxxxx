@@ -14,42 +14,42 @@ ideas:
 - user_id: '5'
   title: No laptops
   description: Jeff gets very mad during presentations.
-- title: bk_idea
-  description: bk_descddddddddsdddff
-  rank: 2
-  id: 5
-  user_id: '5'
-  group_id: '1'
 - user_id: '3'
   title: user_3_idea_title
   description: "user_3_with no group\r\n"
-- user_id: '5'
-  title: dd
+- title: dd
   description: dd
+  rank: 1
+  id: 6
+  user_id: '5'
   group_id: '2'
-- user_id: '5'
-  title: '123'
-  description: '4546'
-  group_id: '1'
-- user_id: '5'
-  title: gsdg
-  description: dgdg
-  group_id: '4'
-- user_id: '5'
-  title: anohter
-  description: ye
-  group_id: '1'
+  tags: []
 - title: YEAH
   description: NOPEYESP
   rank: 3
   id: 11
   user_id: '5'
   group_id: '1'
-- user_id: '5'
-  title: New tag idea
+- title: New tag idea
   description: YARGH
-  tags: foo, bar, baz
+  rank: 5
+  id: 9
+  user_id: '5'
   group_id: '1'
+  tags:
+  - '["[\"[\\\"[\\\\\\\"foo\\\\\\\"\\\"\""'
+  - '"\"\\\"\\\\\\\"bar\\\\\\\"\\\"\""'
+  - '"\"\\\"\\\\\\\"baz\\\\\\\"]\\\"]\"]"]'
+- title: fff
+  description: fff
+  rank: 2
+  id: 9
+  user_id: '5'
+  group_id: '4'
+  tags:
+  - '["foo"'
+  - '"bar"'
+  - '"baz"]'
 users:
 - !ruby/object:User
   email: 

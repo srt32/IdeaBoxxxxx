@@ -72,7 +72,7 @@ class IdeaBoxApp < Sinatra::Base
   end
 
   get '/tags/:tag' do |tag|
-    "#{tag} page!"
+    erb :tag_show, locals: {tag: tag, ideas: IdeaStore.find_all_by_tag(tag)}
   end
 
 end

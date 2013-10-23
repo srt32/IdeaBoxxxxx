@@ -6,10 +6,12 @@ class IdeaBoxApp < Sinatra::Base
   set :method_override, true
   set :root, 'lib/app'
 
-  before // do
-    OPEN_URLS = ['/login', '/auth/twitter/callback', '/']
-    pass if session[:admin] || OPEN_URLS.include?(request.path_info)
-    redirect to('/login')
+  unless ENV['RACK_ENV'] == 'test'
+    before // do
+      OPEN_URLS = ['/login', '/auth/twitter/callback', '/']
+      pass if session[:admin] || OPEN_URLS.include?(request.path_info)
+      redirect to('/login')
+    end
   end
 
   helpers do
@@ -42,15 +44,6 @@ class IdeaBoxApp < Sinatra::Base
   get '/logout' do
     session[:admin] = nil
     "You are now logged out"
-  end
-
-  get '/public' do
-    "This is a public page"
-  end
-
-  get '/private' do
-    halt(401, 'Not Authorized') unless admin?
-    "This is private."
   end
 
   configure :development do

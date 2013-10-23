@@ -35,6 +35,7 @@ class IdeaBoxApp < Sinatra::Base
   get '/auth/twitter/callback' do
     env['omniauth.auth'] ? session[:admin] = true : halt(401,'Not Authorized')
     "Hi #{env['omniauth.auth']['info']['name']}"
+    redirect to("/users")
   end
 
   get '/auth/failure' do

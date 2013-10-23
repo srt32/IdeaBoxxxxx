@@ -1,5 +1,11 @@
 <h3><%= user.email %>'s user page</h3>
 
+<% if session[:idea] %>
+  <% session[:idea].each do |error|  %>
+    <%= error %><br />
+  <% end %>
+<% end %>
+
 <div class="new_user_idea_form">
   <form action='/users/<%= user.id %>' method='POST'>
     <p>

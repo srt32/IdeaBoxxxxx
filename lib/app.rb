@@ -102,12 +102,23 @@ class IdeaBoxApp < Sinatra::Base
   get '/users/:id' do |id|
     @@current_user_id = id
     user = UserStore.find(id.to_i)
+    @@error_view_count ||= 0
+    @@error_view_count += 1 if session[:idea]
+    session[:idea] = [] if @@error_view_count == 2
     erb :user_show, locals: {user: user,
                             groups: GroupStore.find_all_by_user_id(id.to_i)}
-    # write idea unit test for find_all_by_user_id
   end
 
   post '/users/:id' do |id|
+    session[:idea] = []
+    @@error_view_count ||= 0
+    REQUIRED_PARAMS ||= ["title","description"]
+    REQUIRED_PARAMS.each do |param|
+      if params[:idea][param].empty?
+        session[:idea] << "Please fill in #{param}"
+      end
+    end
+    redirect '/users/' + id unless session[:idea] == []
     IdeaStore.create(params[:idea])
     redirect '/users/' + id
   end

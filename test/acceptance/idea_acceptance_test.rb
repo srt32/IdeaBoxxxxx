@@ -80,6 +80,14 @@ class IdeaAcceptanceTest < Minitest::Test
     refute page.has_content?("Please fill in groups"), "Should NOT show group error"
   end
 
+  def test_it_shows_validation_errors_on_only_first_request
+    visit '/users/1'
+    click_button('submit_button')
+    assert page.has_content?("Please fill in title"), "Should show title error"
+    visit '/users/1'
+    refute page.has_content?("Please fill in title"), "Should NOT show title error on refresh"
+  end
+
   def make_ideas_with_tags(amount)
     titles = ["big idea", "foofoo", "big dingo"]
     tags = ["foo", "foo", "bar"]

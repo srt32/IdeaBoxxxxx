@@ -122,3 +122,7 @@ groups:
   name: ddd
   user_id: '5'
   id: 4
+- !ruby/object:Group
+  name: rrrr
+  user_id: '8'
+  id: 5

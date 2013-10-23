@@ -91,6 +91,10 @@ class IdeaBoxApp < Sinatra::Base
   end
 
   post '/users' do
+    if params[:user]["email"].empty?
+      session[:user] = "Please fill in an email"
+      redirect back
+    end
     UserStore.create(User.new(params[:user]))
     redirect '/users'
   end

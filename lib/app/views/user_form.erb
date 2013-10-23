@@ -1,3 +1,7 @@
+<% if session[:user] %>
+  <%= session[:user] %>
+<% end %>
+
 <form action='/users' method='POST'>
   <p>
   Enter your email to make a new user

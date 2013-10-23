@@ -36,6 +36,12 @@ class UserAcceptanceTest < Minitest::Test
     assert page.has_content?("Kumar@example.com") #redirect /users
   end
 
+  def test_it_does_not_accept_null_email
+    visit '/users'
+    click_button('sign_up_button')
+    assert page.has_content?("Please fill in an email"), "page should alert validation error"
+  end
+
   def test_it_goes_to_user_show_page
     visit '/users/1'
     assert page.has_content?("simon@example.com")

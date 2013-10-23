@@ -96,6 +96,15 @@ users:
 - !ruby/object:User
   email: Adam@UK.com
   id: 5
+- !ruby/object:User
+  email: ''
+  id: 6
+- !ruby/object:User
+  email: ''
+  id: 7
+- !ruby/object:User
+  email: user@ex.com
+  id: 8
 groups:
 - !ruby/object:Group
   name: Big Kahuna

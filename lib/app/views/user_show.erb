@@ -1,7 +1,7 @@
 <h3><%= user.email %>'s user page</h3>
 
-<% if session[:idea] %>
-  <% session[:idea].each do |error|  %>
+<% if errors.length > 0 %>
+  <% errors.each do |error|  %>
     <%= error %><br />
   <% end %>
 <% end %>

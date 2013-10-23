@@ -80,6 +80,11 @@ ideas:
   group_id: '1'
   tags:
   - FRANK BEANS
+- user_id: '8'
+  title: '123'
+  description: '123'
+  tags: ''
+  group_id: '5'
 users:
 - !ruby/object:User
   email: 

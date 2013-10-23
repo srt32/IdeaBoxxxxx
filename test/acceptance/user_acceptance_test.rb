@@ -41,16 +41,6 @@ class UserAcceptanceTest < Minitest::Test
     assert page.has_content?("simon@example.com")
   end
 
-  def test_it_can_post_a_new_idea_for_current_user
-    skip # depracated - need to select a group from the dropdown
-    visit '/users/1'
-    fill_in('idea[title]', :with => "User 1's big idea")
-    fill_in('idea[description]', :with => "User 1's first big idea's description")
-    click_button('submit_button')
-    assert page.has_content?("User 1's big idea"), "page should display idea title"
-    assert page.has_content?("User 1's first big idea's description"), "page should display idea desc"
-  end
-
   def test_user_index_has_button_to_user_show
     visit '/users'
     first('.user_see_more').click_link('See more')

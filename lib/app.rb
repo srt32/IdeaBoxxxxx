@@ -8,7 +8,7 @@ class IdeaBoxApp < Sinatra::Base
 
   unless ENV['RACK_ENV'] == 'test'
     before // do
-      OPEN_URLS = ['/login', '/auth/twitter/callback', '/']
+      OPEN_URLS = ['/login', '/auth/twitter/callback', '/', '/styles/*']
       pass if session[:admin] || OPEN_URLS.include?(request.path_info)
       redirect to('/login')
     end

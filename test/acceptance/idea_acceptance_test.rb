@@ -71,6 +71,15 @@ class IdeaAcceptanceTest < Minitest::Test
     assert page.has_content?("foo"), "page should have a tag"
   end
 
+  def test_it_rejects_empty_fields
+    visit '/users/1'
+    click_button('submit_button')
+    assert page.has_content?("Please fill in title"), "Should show title error"
+    assert page.has_content?("Please fill in description"), "Should show desc error"
+    refute page.has_content?("Please fill in tags"), "Should NOT show tags error"
+    refute page.has_content?("Please fill in groups"), "Should NOT show group error"
+  end
+
   def make_ideas_with_tags(amount)
     titles = ["big idea", "foofoo", "big dingo"]
     tags = ["foo", "foo", "bar"]
@@ -91,7 +100,6 @@ class IdeaAcceptanceTest < Minitest::Test
     visit '/users/1'
     assert page.has_content?("Your tags:"), "user#show page has tags title"
     assert page.has_content?("foo"), "'foo' tag should be on page"
-    # new method, users.all_tags (gets user's ideas and ideas' tag.uniq)
     click_link("foo")
     assert page.has_content?("Your ideas tagged with foo"), "tag#show page has title"
     assert page.has_content?("big idea")

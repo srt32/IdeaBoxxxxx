@@ -50,7 +50,7 @@ class AppTest < Minitest::Test
 
   def test_it_can_route_to_idea_it_put
     post_an_idea
-    put '/0', params={:idea => {:idea_title => "updated title", :idea_description => "updated description"}}
+    put '/0', params={:idea => {:idea_title => "updated title", :idea_description => "updated description", :group_id => 2}}
     assert last_response.redirect?, "route was not redirected"
   end
 

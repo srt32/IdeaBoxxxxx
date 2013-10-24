@@ -42,8 +42,11 @@ class IdeaAcceptanceTest < Minitest::Test
     visit '/users/1'
     click_link('Edit')
     fill_in('idea[title]', :with => "NOPE")
+    fill_in('idea[description]', :with => "OKAY")
+    find(:select, "idea[group_id]").first(:option, 'user_1_second_group').select_option
     click_button('submit_button')
-    assert page.has_content?('NOPE'), "should redirect to user/:id TODO"
+    assert_equal 200, page.status_code
+    assert page.has_content?('NOPE'), "should redirect to user/:id"
   end
 
   def test_it_can_delete_an_idea

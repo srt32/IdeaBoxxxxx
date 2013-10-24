@@ -38,12 +38,16 @@ class IdeaTest < Minitest::Test
   def test_it_can_be_updated
     data = {
       "title" => "app",
-      "description" => "new description penguins"
+      "description" => "new description penguins",
+      "group_id" => 1,
+      "tags" => "boom, bang"
     }
     IdeaStore.update(0,data)
     assert_equal "new description penguins", (IdeaStore.database.transaction {|db| db['ideas'][0]})["description"]
     assert_equal "3", (IdeaStore.database.transaction {|db| db['ideas'][0]})["rank"]
     assert_equal 1, (IdeaStore.database.transaction {|db| db['ideas'][0]})["user_id"]
+    assert_equal 1, (IdeaStore.database.transaction {|db| db['ideas'][0]})["group_id"]
+    assert_equal "boom, bang", (IdeaStore.database.transaction {|db| db['ideas'][0]})["tags"]
   end
 
   def test_it_can_be_liked

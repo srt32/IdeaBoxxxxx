@@ -5,6 +5,11 @@ require 'pry'
 class LoginAcceptanceTest < Minitest::Test
   include Capybara::DSL
 
+  def test_it_gets_home_page
+    visit '/'
+    assert_equal 200, page.status_code
+  end
+
   def test_it_gets_login_page
     visit '/login'
     assert_equal 404, page.status_code

@@ -6,7 +6,7 @@
   <% end %>
 <% end %>
 
-<div class="new_user_idea_form">
+<div id="new_user_idea_form">
   <form action='/users/<%= user.id %>' method='POST'>
     <p>
       Your new idea:
@@ -35,32 +35,50 @@
   </form>
 </div>
 
-<p>Existing Groups</p>
-<% groups.each do |group| %>
-  <ul id="user_group_list">
-    <li>Group name: <%= group.name %></li>
-      <% group.ideas.sort.each do |idea| %>
-        <ul id="group_idea_list">
-          <li>
-            <%= idea.title  %><%= idea.description %><%= idea.rank %>
-            <% idea.tags.each do |tag| %>
-              <%= tag %>
-            <% end %>
-          </li>
-            <form action='/<%= idea.id %>/like' method='POST' style="display: inline">
-              <input type='submit' id='rank_button' value="+" />
-            </form>
-            <a href="/<%= idea.id %>/edit">Edit</a>
-            <form action="/<%= idea.id %>" method="POST">
-              <input type="hidden" name="_method" value="DELETE">
-              <input type="submit" value="delete" />
-            </form>
-        </ul>
-      <% end %>
-  </ul>
-<% end %>
+<div id="ideas_by_group">
+  <p>Existing Groups</p>
+    <div class="groups clearfix">
+  <% groups.each do |group| %>
+    <ul id="user_group_list">
+      <li class"group_name">Group name: <%= group.name %></li>
+        <% group.ideas.sort.each do |idea| %>
+          <ul id="group_idea_list">
+            <ul class="idea_attribs">
+              <li class="idea_title">
+                Title: <%= idea.title  %>
+              </li>
+              <li class="idea_description">
+                Desc: <%= idea.description %>
+              </li>
+              <li class="idea_rank">
+                Rank: <%= idea.rank %>
+              </li>
+              <li class="idea_tags">
+                <% idea.tags.each do |tag| %>
+                  <%= tag %>
+                <% end %>
+              </li>
+            </ul>
+            <div class="idea_actions">
+              <form action='/<%= idea.id %>/like' method='POST' style="display: inline">
+                <input type='submit' id='rank_button' value="+" />
+              </form>
+              <a href="/<%= idea.id %>/edit">Edit</a>
+              <form action="/<%= idea.id %>" method="POST">
+                <input type="hidden" name="_method" value="DELETE">
+                <input type="submit" value="delete" />
+              </form>
+            </div>
+          </ul>
+        <% end %>
+    </ul>
+  <% end %>
+  </div><!-- //.groups -->
+</div>
 
-<p>Your tags:</p>
-<% user.all_tags.each do |tag| %>
-  <a href='/tags/<%= tag %>'><%= tag %></a>
-<% end %>
+<div class="your_tags">
+  <p>Your tags:</p>
+  <% user.all_tags.each do |tag| %>
+    <a href='/tags/<%= tag %>'><%= tag %></a>
+  <% end %>
+</div>

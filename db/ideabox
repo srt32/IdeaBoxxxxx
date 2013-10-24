@@ -43,14 +43,14 @@ ideas:
   - '"\"\\\"\\\\\\\"baz\\\\\\\"]\\\"]\"]"]'
 - title: fff
   description: fff
-  rank: 3
+  rank: 4
   id: 9
   user_id: '5'
   group_id: '4'
   tags:
-  - '["[\"foo\""'
-  - '"\"bar\""'
-  - '"\"baz\"]"]'
+  - foo
+  - bar
+  - baz
 - title: yARP
   description: ABARHGFH
   rank: 1
@@ -66,12 +66,12 @@ ideas:
   group_id: '4'
 - title: NEW NEW IDEA
   description: ''
-  rank: 4
+  rank: 5
   id: 12
   user_id: '5'
   group_id: '4'
   tags:
-  - '["[\"[\\\"frank beans\\\"]\"]"]'
+  - frank beans
 - title: ARRAY
   description: ''
   rank: 5
@@ -131,3 +131,7 @@ groups:
   name: rrrr
   user_id: '8'
   id: 5
+- !ruby/object:Group
+  name: ''
+  user_id: '5'
+  id: 6

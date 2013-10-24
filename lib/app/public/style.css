@@ -1,3 +1,18 @@
+.clearfix:after {
+     visibility: hidden;
+     display: block;
+     font-size: 0;
+     content: " ";
+     clear: both;
+     height: 0;
+     }
+.clearfix { display: inline-block; }
+/* start commented backslash hack \*/
+* html .clearfix { height: 1%; }
+.clearfix { display: block; }
+/* close commented backslash hack */
+
+
 body {
   background-color: gray;
 }
@@ -18,3 +33,55 @@ body {
   text-decoration:none;
 }
 
+#new_user_idea_form {
+  float:left;
+  border-style:solid;
+  margin-bottom:20px;
+}
+
+#new_user_group_form {
+  float:left;
+  border-style:solid;
+  margin-left:100px;
+}
+
+#new_user_group_form p {
+  display:inline;
+}
+
+#ideas_by_group {
+  clear:both;
+}
+
+.idea_actions form {
+  display:inline;
+}
+
+#user_group_list {
+  background-color:yellow;
+  float:left;
+  border-style:solid;
+  margin-right:20px;
+}
+
+#ideas_by_group  {
+  border-style:solid;
+  background-color:blue;
+  /*float:left;*/
+  overflow:hidden;
+  text-align:center;
+}
+
+.groups {
+  overflow: hidden;
+  display: inline-block;
+}
+
+.your_tags {
+  clear:both;
+  background-color:red;
+}
+
+.idea_attribs {
+  list-style-type:none;
+}

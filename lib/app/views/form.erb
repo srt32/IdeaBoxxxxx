@@ -12,6 +12,12 @@
   <% end %>
   <input type='text' name='idea[title]' value="<%= idea.title %>"/><br />
   <textarea name='idea[description]'><%= idea.description %></textarea><br />
+  Group: <select name='idea[group_id]' id='group_dropdown'>
+      <% groups.each do |group| %>
+        <option value=<%= group.id %> name=<%= group.name %>><%= group.name %></option>
+      <% end %>
+    </select>
+  <input type='text' name='idea[tags]' value="<%= idea.tags.join(', ') %>"/><br />
   <input type='submit' id='submit_button'/>
 </form>
 

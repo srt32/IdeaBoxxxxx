@@ -27,11 +27,6 @@ class AppTest < Minitest::Test
                                 :tags => "foo, bar, baz"}}
   end
 
-  def test_it_can_route_to_root_with_get
-    get '/'
-    assert last_response.ok?
-  end
-
   def test_it_routes_to_root_post
     skip # deprecated, now posts to /users/:id
     post_an_idea

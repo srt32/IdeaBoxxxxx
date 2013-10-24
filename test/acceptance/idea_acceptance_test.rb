@@ -33,20 +33,17 @@ class IdeaAcceptanceTest < Minitest::Test
     File.delete('./ideabox_test') if File.exists?('./ideabox_test')
   end
 
-  def test_it_doesnt_break
-    visit '/'
-    assert_equal 200, page.status_code
-  end
-
-  def test_it_can_edit_an_idea
+  def test_it_can_edit_an_idea_with_tags
     visit '/users/1'
     click_link('Edit')
     fill_in('idea[title]', :with => "NOPE")
     fill_in('idea[description]', :with => "OKAY")
     find(:select, "idea[group_id]").first(:option, 'user_1_second_group').select_option
+    fill_in('idea[tags]', :with => "tags!")
     click_button('submit_button')
     assert_equal 200, page.status_code
     assert page.has_content?('NOPE'), "should redirect to user/:id"
+    assert page.has_content?('tags!'), "should have new tag"
   end
 
   def test_it_can_delete_an_idea

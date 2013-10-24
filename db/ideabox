@@ -22,8 +22,8 @@ ideas:
   rank: 1
   id: 6
   user_id: '5'
-  group_id: '2'
-  tags: []
+  group_id: '4'
+  tags: ''
 - title: YEAH
   description: NOPEYESP
   rank: 4
@@ -34,23 +34,17 @@ ideas:
 - title: New tag idea
   description: YARGH
   rank: 5
-  id: 9
+  id: 8
   user_id: '5'
-  group_id: '1'
-  tags:
-  - '["[\"[\\\"[\\\\\\\"foo\\\\\\\"\\\"\""'
-  - '"\"\\\"\\\\\\\"bar\\\\\\\"\\\"\""'
-  - '"\"\\\"\\\\\\\"baz\\\\\\\"]\\\"]\"]"]'
+  group_id: '2'
+  tags: ''
 - title: fff
   description: fff
   rank: 4
   id: 9
   user_id: '5'
-  group_id: '4'
-  tags:
-  - foo
-  - bar
-  - baz
+  group_id: '1'
+  tags: foo, bar, baz, bing
 - title: yARP
   description: ABARHGFH
   rank: 1

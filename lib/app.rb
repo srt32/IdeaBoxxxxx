@@ -69,8 +69,9 @@ class IdeaBoxApp < Sinatra::Base
   end
 
   get '/:id/edit' do |id|
+    user_id = @@current_user_id
     idea = IdeaStore.find(id.to_i)
-    erb :edit, locals: {idea: idea}
+    erb :edit, locals: {idea: idea, groups: GroupStore.find_all_by_user_id(user_id.to_i)}
   end
 
   put '/:id' do |id|

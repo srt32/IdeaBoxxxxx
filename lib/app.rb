@@ -86,16 +86,22 @@ class IdeaBoxApp < Sinatra::Base
   end
 
   get '/users' do
-    erb :users_index, locals: {users: UserStore.all, user: User.new}
+    erb :users_index, locals: {users: UserStore.all,
+                               user: User.new,
+                               errors: []}
   end
 
   post '/users' do
     if params[:user]["email"].empty?
-      session[:user] = "Please fill in an email"
-      redirect back
+      errors = []
+      errors << "Please fill in an email"
+      erb :users_index, locals: {users: UserStore.all,
+                                 user: User.new,
+                                 errors: errors}
+    else
+      UserStore.create(User.new(params[:user]))
+      redirect '/users'
     end
-    UserStore.create(User.new(params[:user]))
-    redirect '/users'
   end
 
   get '/users/:id' do |id|
